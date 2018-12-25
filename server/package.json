@@ -1,0 +1,41 @@
+{
+  "name": "nodejs-clean-architecture-app",
+  "version": "1.0.0",
+  "description": "A simple API built with Node.js/Hapi.js that follows DDD + Clean Architecture principles",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon",
+    "start": "node index.js",
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "author": "Shankar Nakai Gonçalves dos Santos",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shankarnakai/student-api.git"
+  },
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "ramda": "^0.26.1",
+    "require-directory": "^2.1.1",
+    "uuid": "^3.3.2",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "jest": "^22.4.4",
+    "nodemon": "^1.18.4"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/coverage/**"
+    ],
+    "testURL": "http://localhost/"
+  }
+}
