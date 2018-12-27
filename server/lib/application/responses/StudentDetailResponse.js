@@ -4,7 +4,7 @@ module.exports = class {
                 this.first = data.firstName
                 this.last = data.lastName
                 this.gpa = data.gpa
-                this.classes = this.classes.map(buildStudentClasses)
+                this.classes = data.classes.map(buildStudentClasses)
         }
 }
 
