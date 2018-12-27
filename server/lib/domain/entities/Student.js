@@ -8,13 +8,13 @@ module.exports = class {
                 this.classes = classes;
         }
 
-        getAverageGrage() {
+        getAverageGrade() {
                 const len = this.classes.length 
                 if(len == 0) {
                         return 0
                 }
 
-                const total = this.classes.reduce((total, item) => total + item.grade)
+                const total = this.classes.reduce((total, item) => total + item.grade, 0)
                 return total/len
         }
 };

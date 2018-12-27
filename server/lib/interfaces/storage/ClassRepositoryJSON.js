@@ -3,7 +3,7 @@
 const R = require('ramda')
 
 const ClassEntity = require('../../domain/entities/Class');
-const ClassRepository = require('../../application/repositories/class-repository');
+const ClassRepository = require('../../application/repositories/ClassRepository');
 const FileJSON = require('../../infrastructure/database/file-json');
 
 

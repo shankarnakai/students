@@ -4,15 +4,13 @@ module.exports = class {
                         return []
                 }
 
-                this.lista = data.map(buildStudentItem)
+                this.list = lst.map(buildStudentItem)
         }
 }
 
-const buidStudentItem = (item) => {
-        return {
-                'first': item.firstName || "",
-                'last': item.lastName || "",
-                'email': item.email || "",
-                'gpa': item.getAverageGrade() || 0
-        }
-}
+const buildStudentItem = (item) => ({
+        'first': item.firstName || "",
+        'last': item.lastName || "",
+        'email': item.email || "",
+        'gpa': item.getAverageGrade() || 0
+})

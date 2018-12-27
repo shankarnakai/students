@@ -2,7 +2,7 @@
 
 const Student = require('../../domain/entities/Student');
 const FileJSON = require('../../infrastructure/database/file-json');
-const StudentRepository = require('../../application/repositories/student-repository');
+const StudentRepository = require('../../application/repositories/StudentRepository');
 
 const collectionName = "students"
 
