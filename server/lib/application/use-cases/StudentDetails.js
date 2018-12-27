@@ -13,7 +13,7 @@ module.exports = class {
         async execute(request) {
                 const student = await this.studentRepository.getByEmail(request)
                 reqClass = {
-                        ids = student.classes.map(item => item.id)
+                        ids : student.classes.map(item => item.id)
                 }
 
                 const classesList = await this.classRespository.findIDs(reqClass)

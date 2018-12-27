@@ -1,21 +1,18 @@
 const express = require("express");
 
 //Controllers
-//const StudentsCtrl = require('../../../interfaces/controllers/students-controller')
+const NewStudentsCtrl = require('../../../interfaces/controllers/students-controller')
+const Controller = NewStudentsCtrl()
+
 const router = express.Router();
 
-//students handlers
-//router.get("/students", StudentsCtrl.searchStudents);
-//router.get("/students/:email", StudentsCtrl.detailStudents);
+const handler = (ctrlFunc) => async (req, res) => {
+        const data = await ctrlFunc(req)
+        res.send(data)
+        return
+}
 
-const { NotImplementedError } = require("../../../application/errors");
-
-router.get("/students", (req, res) => {
-        throw new NotImplementedError("NOT IMPLEMENTED");
-});
-
-router.get("/students/:email", () => {
-        throw new NotImplementedError();
-});
+router.get("/students", handler(Controller.search)) 
+router.get("/students/:email", handler(Controller.detail)) 
 
 module.exports = router

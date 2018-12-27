@@ -1,20 +1,20 @@
 'use strict';
 
 module.exports = class {
-        constructor(email, firstName, lastName, grade) {
+        constructor(email, firstName, lastName, classes) {
                 this.email = email;
                 this.firstName = firstName;
                 this.lastName = lastName;
-                this.grade = grade;
+                this.classes = classes;
         }
 
         getAverageGrage() {
-                const len = this.grade.length 
+                const len = this.classes.length 
                 if(len == 0) {
                         return 0
                 }
 
-                const total = this.grade.reduce((total, item) => total + item.grade)
+                const total = this.classes.reduce((total, item) => total + item.grade)
                 return total/len
         }
 };

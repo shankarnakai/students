@@ -1,0 +1,42 @@
+{
+        "students": [{
+                "first": "John",
+                "last": "Smith",
+                "email": "johnsmith@mailinator.com",
+                "studentClasses": [{
+                        "id": 1,
+                        "grade": 4
+                }, {
+                        "id": 2,
+                        "grade": 3
+                }]
+        }, {
+                "first": "Jane",
+                "last": "Smith",
+                "email": "janesmith@mailinator.com",
+                "studentClasses": [{
+                        "id": 1,
+                        "grade": 3
+                }, {
+                        "id": 3,
+                        "grade": 2.5
+                }, {
+                        "id": 7,
+                        "grade": 3.5
+                }]
+        }, {
+                "first": "Jim",
+                "last": "Johnson",
+                "email": "jim-johnson@mailinator.com",
+                "studentClasses": [{
+                        "id": 1,
+                        "grade": 2.5
+                }, {
+                        "id": 3,
+                        "grade": 3.5
+                }, {
+                        "id": 4,
+                        "grade": 2.5
+                }]
+        }]
+}

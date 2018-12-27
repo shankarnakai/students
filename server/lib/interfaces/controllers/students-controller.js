@@ -1,30 +1,34 @@
 'use strict';
+const { pick } = require('ramda')
 
-const StudentSerializer = require('../serializers/StudentSerializer');
-const ListStudents = require('../../application/use_cases/ListStudents');
-const CreateStudent = require('../../application/use_cases/CreateStudent');
-const GetStudent = require('../../application/use_cases/GetStudent');
-const DeleteStudent = require('../../application/use_cases/DeleteStudent');
+const StudentsSearch = require('../../application/use-cases/StudentsSearch');
+const StudentDetails = require('../../application/use-cases/StudentDetails');
+const StudentSerializer = require('../serializers/students-serializer');
+
 const StudentRepositoryJSON = require('../storage/StudentRepositoryJSON');
+const ClassRepositoryJSON = require('../storage/ClassRepositoryJSON');
 
-module.exports = class {
+module.exports = () => {
+        const studendSerializer = new StudentSerializer();
+        const studendRepository = new StudentRepositoryJSON('../../../../data/');
+        const classRepository = new ClassRepositoryJSON();
 
-  constructor() {
-    this.studendSerializer = new StudentSerializer();
-    this.studendRepository = new StudentRepositoryJSON();
-  }
+        const search = async (request) => {
+                const req = pick(['first', 'last', 'limit', 'skip'], request.params)
+                const useCase = new StudentsSearch(studendRepository)
+                const studends = await useCase.execute(req)
+                return studends.map(studendSerializer.serialize)
+        }
 
-  search() {
-    const useCase = new ListStudents(this.studendRepository);
-    return useCase.execute()
-      .then(studends => studends.map(this.studendSerializer.serialize));
-  }
+        const detail = async (request) => {
+                const email = request.params.email
+                const useCase = new StudentDetail(studendRepository, classRepository)
+                const student = await useCase.execute({ email })
+                return this.studendSerializer.serialize(studend)
+        }
 
-  detail(request) {
-    const email = request.params.email;
-    const useCase = new StudentSearch(this.studendRepository);
-    return useCase.execute(email)
-      .then(studend => this.studendSerializer.serialize(studend));
-  }
-
+        return  {
+                search,
+                detail
+        }
 };
