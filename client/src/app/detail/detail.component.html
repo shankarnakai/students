@@ -1,0 +1,15 @@
+<div *ngIf="student">
+        <span> {{ student.first }} {{ student.last }} </span>
+        <span> {{ student.email }} </span>
+        <span> {{ student.gpa }} </span>
+        <table>
+                <tr *ngFor="let class of student.classes">
+                        <td>
+                                {{ class.name }}
+                        </td>
+                        <td>
+                                {{ class.grade }}
+                        </td>
+                </tr>
+        </table>
+</div>

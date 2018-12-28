@@ -1,0 +1,19 @@
+<div>
+        <input (keyup)="searchTerm$.next($event.target.value)">
+</div>
+<table *ngIf="students">
+        <tr *ngFor="let item of students">
+                <td>
+                        {{ item.first }}
+                </td>
+                <td>
+                        {{ item.last }}
+                </td>
+                <td>
+                        <a href="/detail/{{ item.email }}"> {{ item.email }}</a>
+                </td>
+                <td>
+                        {{ item.gpa }}
+                </td>
+        </tr>
+</table>

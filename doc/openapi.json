@@ -1,0 +1,226 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Students API",
+    "description" : "Students API",
+    "contact" : {
+      "email" : "shankar.nakai@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.1.0-oas3"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/shankarnakai/StudentsAPI/1.0.0"
+  }, {
+    "url" : "http://virtserver.swaggerhub.com/shankarnakai/StudentsAPI/1.0.0"
+  } ],
+  "tags" : [ {
+    "name" : "student",
+    "description" : "Everything about students",
+    "externalDocs" : {
+      "description" : "Find out more",
+      "url" : "http://swagger.io"
+    }
+  } ],
+  "paths" : {
+    "/students" : {
+      "get" : {
+        "tags" : [ "student" ],
+        "summary" : "searches for students' first name or/and last name",
+        "description" : "By passing the first name search for students by their name (first, last, or both).\n",
+        "operationId" : "searchStudents",
+        "parameters" : [ {
+          "name" : "first",
+          "in" : "query",
+          "description" : "pass a first name to look up in the datastore",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "last",
+          "in" : "query",
+          "description" : "pass a last name to look up in the datastore",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "skip",
+          "in" : "query",
+          "description" : "number of records to skip for pagination",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 50,
+            "minimum" : 0,
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/StudentList"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/StudentList"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          },
+          "404" : {
+            "description" : "There is no students"
+          }
+        }
+      }
+    },
+    "/students/{email}" : {
+      "get" : {
+        "tags" : [ "student" ],
+        "summary" : "searches for students' first name or/and last name",
+        "description" : "Get student's detail by email",
+        "operationId" : "getStudent",
+        "parameters" : [ {
+          "name" : "email",
+          "in" : "path",
+          "description" : "Student's email to return",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "email"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Student matching with the email",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/StudentDetail"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/StudentDetail"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          },
+          "404" : {
+            "description" : "Student not found"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "StudentList" : {
+        "type" : "array",
+        "xml" : {
+          "name" : "students",
+          "wrapped" : true
+        },
+        "items" : {
+          "$ref" : "#/components/schemas/StudentItem"
+        }
+      },
+      "StudentItem" : {
+        "required" : [ "email", "first", "gpa", "last" ],
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "format" : "email",
+            "example" : "lorem@lorem.com"
+          },
+          "first" : {
+            "type" : "string",
+            "example" : "Adam"
+          },
+          "last" : {
+            "type" : "string",
+            "example" : "Culler"
+          },
+          "gpa" : {
+            "type" : "integer",
+            "format" : "float32"
+          }
+        },
+        "xml" : {
+          "name" : "student"
+        }
+      },
+      "StudentDetail" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/StudentItem"
+        }, {
+          "required" : [ "classes" ],
+          "type" : "object",
+          "properties" : {
+            "classes" : {
+              "type" : "array",
+              "xml" : {
+                "name" : "classes",
+                "wrapped" : true
+              },
+              "items" : {
+                "$ref" : "#/components/schemas/StudentClass"
+              }
+            }
+          }
+        } ]
+      },
+      "StudentClass" : {
+        "required" : [ "grade", "name" ],
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "example" : "Math 101"
+          },
+          "grade" : {
+            "type" : "integer",
+            "format" : "float32"
+          }
+        },
+        "xml" : {
+          "name" : "class"
+        }
+      }
+    }
+  }
+}
