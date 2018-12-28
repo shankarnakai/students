@@ -32,15 +32,15 @@ function formatResult(item) {
 }
 
 const filterByEmail = (email) => (student) => {
-        return email == student.email
+        return email.toLowerCase() === student.email.toLowerCase()
 }
 
 const filterByFirstName = (first) => (student) => {
-        return first == student.first
+        return student.first.toLowerCase().includes(first.toLowerCase())
 }
 
 const filterByLastName = (last) => (student) => {
-        return  last == student.last
+        return  student.last.toLowerCase().includes(last.toLowerCase())
 }
 
 const filterByFullName = (first, last) => (student) => {
