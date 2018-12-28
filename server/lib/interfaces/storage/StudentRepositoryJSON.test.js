@@ -30,7 +30,7 @@ describe("StudentRepositorySJSON", () => {
 
                 test("Find by First Name", async () => {
                         const result = await repo.find({
-                                firstName: "Jane"
+                                first: "Jane"
                         })
                         expect(result).not.toBeNull()
                         expect(result).toHaveLength(1)
@@ -41,7 +41,7 @@ describe("StudentRepositorySJSON", () => {
 
                 test("Find by Last Name", async () => {
                         const result = await repo.find({
-                                lastName: "Smith"
+                                last: "Smith"
                         })
                         expect(result).not.toBeNull()
                         expect(result).toHaveLength(2)
@@ -58,8 +58,8 @@ describe("StudentRepositorySJSON", () => {
 
                 test("Find by First/Last Name", async () => {
                         const result = await repo.find({
-                                firstName: "John", 
-                                lastName: "Smith"
+                                first: "John", 
+                                last: "Smith"
                         })
                         expect(result).not.toBeNull()
                         expect(result).toHaveLength(1)

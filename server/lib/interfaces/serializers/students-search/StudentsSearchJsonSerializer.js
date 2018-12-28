@@ -10,7 +10,7 @@ const _serializeSingleStudent = (student) => {
 };
 
 module.exports = (data) => {
-        if (!data) {
+        if (!data || !data.list) {
                 return []
         }
         return data.list.map(_serializeSingleStudent);

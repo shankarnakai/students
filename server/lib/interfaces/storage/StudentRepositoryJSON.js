@@ -21,7 +21,7 @@ module.exports = class extends StudentRepository {
                 if (!req) {
                         return this.db.selectAll(collectionName)
                 }
-                const filter = createFilterStudent(req.firstName, req.lastName)
+                const filter = createFilterStudent(req.first, req.last)
                 const results = await this.db.selectAll(collectionName, filter, req.limit, req.skip)
                 return results.map(formatResult)
         }
@@ -40,7 +40,7 @@ const filterByFirstName = (first) => (student) => {
 }
 
 const filterByLastName = (last) => (student) => {
-        return last == student.last
+        return  last == student.last
 }
 
 const filterByFullName = (first, last) => (student) => {

@@ -12,11 +12,11 @@ const _serializeSingleStudent = (acc, student) => {
 };
 
 module.exports = (data) => {
-        if (!data) {
-                throw new Error('Expect data to be not undefined nor null');
+        const header = '<?xml version="1.0" encoding="UTF-8"?>'
+        if (!data || !data.list) {
+                return header + ""
         }
 
-        const header = '<?xml version="1.0" encoding="UTF-8"?>'
         return beautify(`${header}
                         <students>
                                  ${data.list.reduce(_serializeSingleStudent, "")}
