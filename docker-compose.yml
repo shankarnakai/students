@@ -1,0 +1,11 @@
+version: '2'
+services:
+  client-student: 
+    build: client 
+    ports:
+      - "4200:4200" 
+
+  server-student-api: 
+    build: server 
+    ports:
+      - "3000:3000"
