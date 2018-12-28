@@ -17,11 +17,8 @@ module.exports = (data) => {
         }
 
         const header = '<?xml version="1.0" encoding="UTF-8"?>'
-        if (Array.isArray(data)) {
-                return beautify(`${header}
-                                <students>
-                                         ${data.reduce(_serializeSingleStudent, "")}
-                                </students>`)
-        }
-        return beautify(_serializeSingleStudent(header, data))
+        return beautify(`${header}
+                        <students>
+                                 ${data.list.reduce(_serializeSingleStudent, "")}
+                        </students>`)
 }

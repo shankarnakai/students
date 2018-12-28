@@ -54,8 +54,8 @@ describe('#search', () => {
         function searchTestScenarie(sc) {
                 test(`should resolves with ${sc.format}`, () => {
                         // given
-                        StudentsSearch.prototype.execute.mockImplementationOnce(() =>
-                                [{
+                        StudentsSearch.prototype.execute.mockImplementationOnce(() => Promise.resolve({
+                                list: [{
                                         'first': "John",
                                         'last': "Smith",
                                         'email': "johnsmith@mailinator.com",
@@ -66,7 +66,7 @@ describe('#search', () => {
                                         'email': "jane@mailinator.com",
                                         'gpa': 5.49666
                                 }]
-                        );
+                        }))
                         const controller = StudentsController(mockDatabaseConnection);
 
                         // when

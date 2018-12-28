@@ -11,10 +11,7 @@ const _serializeSingleStudent = (student) => {
 
 module.exports = (data) => {
         if (!data) {
-                throw new Error('Expect data to be not undefined nor null');
+                return []
         }
-        if (Array.isArray(data)) {
-                return data.map(_serializeSingleStudent);
-        }
-        return _serializeSingleStudent(data);
+        return data.list.map(_serializeSingleStudent);
 }
