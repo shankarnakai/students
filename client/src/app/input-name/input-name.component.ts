@@ -11,7 +11,6 @@ import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } fro
       useExisting: forwardRef(() => InputNameComponent),
       multi: true
     },
-    //{ provide: NG_VALIDATORS, useExisting: InputNameComponent, multi: true }
   ]
 })
 
@@ -27,7 +26,6 @@ export class InputNameComponent implements ControlValueAccessor {
 
   onChangeFirstName(firstName) {
     this.firstName = firstName
-    console.log('FirstName', this.onChange)
     this.onChange && this.onChange({
       firstName: this.firstName,
       lastName: this.lastName
@@ -36,7 +34,6 @@ export class InputNameComponent implements ControlValueAccessor {
 
   onChangeLastName(lastName) {
     this.lastName = lastName
-    console.log('LastName', this.onChange)
     this.onChange && this.onChange({
       firstName: this.firstName,
       lastName: this.lastName
@@ -50,7 +47,6 @@ export class InputNameComponent implements ControlValueAccessor {
   }
 
   registerOnChange(fn) {
-    console.log('register on change')
     this.onChange = fn
   }
   registerOnTouched(fn) { this.onTouched = fn; }

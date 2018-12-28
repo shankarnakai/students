@@ -38,7 +38,6 @@ export class ListComponent implements OnInit {
   searchEntries(value) {
     return this.studentService.searchStudents(value.firstName, value.lastName)
   }
-
 }
 
 interface FullName {

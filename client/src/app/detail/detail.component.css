@@ -1,0 +1,33 @@
+#student-logo {
+        width: 100px;
+        margin-bottom: 10px;
+}
+
+#student-header {
+        background: #CCC;
+        height: 150px;
+        padding: 10px 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+}
+
+#student-gpa {
+        position: relative;
+        width: 150px;
+        height: 50px;
+        margin: 0px auto;
+        vertical-align: center;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+}
+
+label {
+        font-weight: bold;
+}
+
+#student-profile .student-profile__field {
+        border-bottom: 1px solid #AAA;
+        width: 100%;
+}

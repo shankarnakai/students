@@ -1,2 +1,11 @@
-<input [value]="firstName" (keyup)="onChangeFirstName($event.target.value)" />
-<input [value]="lastName" (keyup)="onChangeLastName($event.target.value)" />
+<div class="form-inline">
+        <label class="sr-only" for="firstName">First Name</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <input type="text" name="firstName" class="form-control" [value]="firstName" (keyup)="onChangeFirstName($event.target.value)" placeholder="First Name" />
+        </div>
+
+        <label class="sr-only" for="lastName">Last Name</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <input type="text" name="lastName" class="form-control" [value]="lastName" (keyup)="onChangeLastName($event.target.value)" placeholder="Last Name" />
+        </div>
+</div>
