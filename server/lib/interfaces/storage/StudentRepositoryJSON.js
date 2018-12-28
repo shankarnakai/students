@@ -27,6 +27,11 @@ module.exports = class extends StudentRepository {
         }
 };
 
+function wordBeginWith(word, str) {
+        const regexp = new RegExp("^" + str.toLowerCase());
+        return regexp.test(word.toLowerCase())
+} 
+
 function formatResult(item) {
         return new Student(item.email, item.first, item.last, item.studentClasses)
 }
@@ -36,11 +41,11 @@ const filterByEmail = (email) => (student) => {
 }
 
 const filterByFirstName = (first) => (student) => {
-        return student.first.toLowerCase().includes(first.toLowerCase())
+        return wordBeginWith(student.first, first)
 }
 
 const filterByLastName = (last) => (student) => {
-        return  student.last.toLowerCase().includes(last.toLowerCase())
+        return  wordBeginWith(student.last, last)
 }
 
 const filterByFullName = (first, last) => (student) => {
