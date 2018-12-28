@@ -11,9 +11,9 @@ const Controller = NewStudentsCtrl(DatabaseJSON(Config.database.path))
 const router = express.Router();
 
 const handler = (ctrlFunc) => async (req, res) => {
-        var content_type = req.headers['content-type'];
+        var accept = req.headers['accept'];
         req.format = 'json'
-        if (content_type && content_type.indexOf('application/xml') !== 0) {
+        if (accept && accept.indexOf('application/xml') !== -1) {
                 req.format = 'xml'
         }
 
