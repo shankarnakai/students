@@ -10,9 +10,9 @@ const FileJSON = require('../../infrastructure/database/file-json');
 const collectionName = "classes"
 
 module.exports = class extends ClassRepository {
-        constructor(path) {
+        constructor(database) {
                 super();
-                this.db = FileJSON(path)
+                this.db = database 
         }
 
         async getByID(id) {

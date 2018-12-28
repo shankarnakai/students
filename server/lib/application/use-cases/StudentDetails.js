@@ -14,7 +14,6 @@ module.exports = class {
                 if(!student) {
                         return null 
                 }
-                console.log(student)
                 const ids = student.classes.map(item => item.id)
 
                 const classesList = await this.classRespository.getIDS(ids)
@@ -30,7 +29,6 @@ module.exports = class {
 
 const buildClasses = (dic) => (item) => {
         const name = dic[item.id]
-        console.log(item.id)
 
         return {
                 name: name,

@@ -7,9 +7,9 @@ const StudentRepository = require('../../application/repositories/StudentReposit
 const collectionName = "students"
 
 module.exports = class extends StudentRepository {
-        constructor(path) {
+        constructor(database) {
                 super();
-                this.db = FileJSON(path)
+                this.db = database; 
         }
 
         async getByEmail(req) {

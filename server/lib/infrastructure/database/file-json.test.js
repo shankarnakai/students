@@ -1,11 +1,5 @@
 const Datastore = require('./file-json')
 
-test('Connecting with fail', () => {
-        expect(() => {
-                Datastore('./test/data/NON_EXIST_FILE.json')
-        }).toThrow();
-})
-
 test('getByKey', async () => {
         const conn = Datastore('./test/data/file.json')
         const result = await conn.getByKey('dictionary', 'key')

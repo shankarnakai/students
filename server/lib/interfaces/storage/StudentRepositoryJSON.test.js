@@ -1,10 +1,11 @@
 const StudentRepositoryJSON = require('./StudentRepositoryJSON')
+const FileJSON = require('../../infrastructure/database/file-json')
 
 const path = "./test/data/students.json"
 const R = require('ramda')
 
 describe("StudentRepositorySJSON", () => {
-        const repo = new StudentRepositoryJSON(path)
+        const repo = new StudentRepositoryJSON(FileJSON(path))
 
         test("getByEmail", async () => {
                 const email = 'jim-johnson@mailinator.com'

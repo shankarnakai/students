@@ -36,8 +36,8 @@ test('Find Students by first name', async () => {
         // when
         const result = await useCase.execute({
                 'firstName': 'John',
-                limit: 0,
-                skip: 0
+                'limit': 0,
+                'skip': 0
         })
 
         // then
