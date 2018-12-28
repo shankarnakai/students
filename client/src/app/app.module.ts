@@ -12,12 +12,14 @@ import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 
 import { environment } from '../environments/environment';
+import { InputNameComponent } from './input-name/input-name.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    DetailComponent
+    DetailComponent,
+    InputNameComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ import 'rxjs/add/operator/switchMap';
 })
 export class ListComponent implements OnInit {
   students: StudentItem[]
-  searchTerm$ = new Subject<string>();
+  searchTerm$ = new Subject<FullName>();
 
   constructor(private studentService: StudentService) { }
 
@@ -29,14 +29,19 @@ export class ListComponent implements OnInit {
     });
   }
 
-  search(terms: Observable<string>) {
+  search(terms: Observable<FullName>) {
     return terms.debounceTime(400)
       .distinctUntilChanged()
       .switchMap(term => this.searchEntries(term));
   }
 
-  searchEntries(firstName) {
-    return this.studentService.searchStudents(firstName)
+  searchEntries(value) {
+    return this.studentService.searchStudents(value.firstName, value.lastName)
   }
 
+}
+
+interface FullName {
+  firstName: string
+  lastName: string
 }
