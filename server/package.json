@@ -1,5 +1,5 @@
 {
-        "name": "Student API",
+        "name": "server",
         "version": "1.0.0",
         "description": "Student API",
         "main": "index.js",
