@@ -6,13 +6,13 @@ This is a demo project applying DDD(Drive Domain Desing) to structure the backen
 https://app.swaggerhub.com/apis-docs/shankarnakai/StudentsAPI/1.1.1-oas3 
 
 ### Capabilities:
-- Student can be search by first, last, or both.
+- Students can be searched by first, last, or both.
 - Results should return the following fields:
   - First Name
   - Last Name
   - Average Grade (GPA)
 
-- Visualize more detail information about the student clicking in the table row. It should show the following fields:
+- Visualize more detailed information about the student clicking in the table row. It should show the following fields:
   - First Name
   - Last Name
   - Email Address
